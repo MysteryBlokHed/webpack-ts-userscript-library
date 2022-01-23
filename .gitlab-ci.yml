@@ -3,6 +3,7 @@ image: node:latest
 stages:
   - lint
   - build
+  - deploy
 
 cache:
   paths:
@@ -22,21 +23,21 @@ lint:
   stage: lint
   only: *changes
   script:
-    - yarn install --cache-folder .yarn-cache
-    - yarn lint --check
+    - yarn --cache-folder .yarn-cache install
+    - yarn --cache-folder .yarn-cache lint --check
 
 test_build:
   stage: build
   only: *changes
   script:
     - export NODE_OPTIONS=--openssl-legacy-provider
-    - yarn install --cache-folder .yarn-cache
-    - yarn build
+    - yarn --cache-folder .yarn-cache install
+    - yarn --cache-folder .yarn-cache build
 
 pages:
   stage: deploy
   script:
-    - yarn doc
+    - yarn --cache-folder .yarn-cache doc
   artifacts:
     paths: ['public/']
   rules:
