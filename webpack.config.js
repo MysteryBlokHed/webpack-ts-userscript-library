@@ -22,11 +22,11 @@ const banner = genBanner({
  *
  * @example
  *
- * // Using a value of 'DefaultName'
- * const { hello } = DefaultName
+ * // Using a value of 'LibraryName'
+ * const { hello } = LibraryName
  * hello()
  */
-const vanillaLibraryName = 'DefaultName'
+const vanillaLibraryName = 'LibraryName'
 
 /** The name of the generated Userscript file */
 const outFile = `${package.name}.user.js`
