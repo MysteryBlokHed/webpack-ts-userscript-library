@@ -15,17 +15,29 @@ const banner = genBanner({
   author: package.author,
   license: package.license,
   homepageURL: package.homepage,
-  match: ['*://example.com/*', 'https://*.foo.com/bar*'],
 })
+
+/**
+ * The name that will be used to import your library in vanilla JS.
+ *
+ * @example
+ *
+ * // Using a value of 'DefaultName'
+ * const { hello } = DefaultName
+ * hello()
+ */
+const vanillaLibraryName = 'DefaultName'
 
 /** The name of the generated Userscript file */
 const outFile = `${package.name}.user.js`
 
 module.exports = {
-  entry: path.resolve(__dirname, 'build/index.js'),
+  entry: path.resolve(__dirname, 'lib/index.js'),
   output: {
     filename: outFile,
     path: __dirname,
+    library: vanillaLibraryName,
+    libraryTarget: 'window',
   },
   plugins: [
     new webpack.BannerPlugin({

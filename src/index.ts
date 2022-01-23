@@ -1,2 +1,1 @@
-import hello from './hello-world'
-hello()
+export {default as hello} from './hello-world'
