@@ -1,1 +1,1 @@
-export {default as hello} from './hello-world'
+export { default as hello } from './hello-world'
