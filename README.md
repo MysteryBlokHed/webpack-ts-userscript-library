@@ -1,8 +1,21 @@
-# webpack-ts-userscript
+# webpack-ts-userscript-library
 
-A template to create UserScripts using TypeScript and Webpack.
+A template to create UserScript libraries using TypeScript and Webpack.
 
 <!-- Info on how to use the template -->
+
+## Difference between this and the original template
+
+This template should only be used if you're making a library for other UserScript developers.
+Its Webpacked `.user.js` file adds exported members to a global object, letting them be used like this:
+
+```typescript
+// Use the exported hello function from the library
+const { hello } = LibraryName
+hello()
+```
+
+The template is also configured to be easily published to npm for developers that don't want to `@require` the library.
 
 ## Customizing the template
 
@@ -71,17 +84,11 @@ Building will result in JavaScript files in the `build/` directory (these can be
 and a file ending in `.user.js` in the root of the project.
 This is the built UserScript.
 
-## Installation
-
-Open the UserScript from the repository as raw with a UserScript extension installed,
-and you should be prompted to install it. You can install a locally built version
-by dragging and dropping the file into a new browser tab.
-
 ## License
 
-This project was created from [a template](https://gitlab.com/MysteryBlokHed/webpack-ts-userscript)
+This project was created from [a template](https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library)
 licensed under the MIT license
-([LICENSE](https://gitlab.com/MysteryBlokHed/webpack-ts-userscript/-/blob/main/LICENSE)
+([LICENSE](https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library/-/blob/main/LICENSE)
 or <http://opensource.org/licenses/MIT>).
 
 [webpack config]: webpack.config.js
