@@ -10,27 +10,36 @@ cache:
     - node_modules/
     - .yarn-cache/
 
-.base:
-  only:
-    changes:
-      - src/**/*
-      - package.json
-      - tsconfig.json
-      - webpack.config.js
-      - .gitlab-ci.yml
-      - .prettier*
+.changes: &changes
+  - src/**/*
+  - package.json
+  - tsconfig.json
+  - webpack.config.js
+  - .gitlab-ci.yml
+  - .prettier*
 
 lint:
   stage: lint
-  extends: .base
+  only: *changes
   script:
     - yarn install --cache-folder .yarn-cache
     - yarn lint --check
 
 test_build:
   stage: build
-  extends: .base
+  only: *changes
   script:
     - export NODE_OPTIONS=--openssl-legacy-provider
     - yarn install --cache-folder .yarn-cache
     - yarn build
+
+pages:
+  stage: deploy
+  script:
+    - yarn doc
+  artifacts:
+    paths: ['public/']
+  rules:
+    # YAML anchor is used for changes here instead of the extends keyword extends doesn't merge arrays
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      changes: *changes

@@ -18,10 +18,12 @@
     "build": "tsc && node update-dts.js && webpack",
     "dev": "nodemon -w src -e ts --exec \"yarn build || exit 1\"",
     "lint": "prettier \"**/*.{js,ts,json,md,yml}\"",
+    "doc": "typedoc",
     "release": "yarn build --mode production && git add . && git commit -m \":bookmark: Release <version>\" --edit"
   },
   "dependencies": {
-    "@types/greasemonkey": "^4.0.2"
+    "@types/greasemonkey": "^4.0.2",
+    "typedoc": "^0.22.11"
   },
   "devDependencies": {
     "greasetools": "^0.2.0",
