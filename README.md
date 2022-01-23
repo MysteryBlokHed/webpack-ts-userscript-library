@@ -6,6 +6,8 @@ A template to create UserScript libraries using TypeScript and Webpack.
 
 ## Difference between this and the original template
 
+### Use case
+
 This template should only be used if you're making a library for other UserScript developers.
 Its Webpacked `.user.js` file adds exported members to a global object, letting them be used like this:
 
@@ -16,6 +18,11 @@ hello()
 ```
 
 The template is also configured to be easily published to npm for developers that don't want to `@require` the library.
+
+### Documentation
+
+Documentation is generated with TypeDoc.
+On GitLab repositories, the latest documentation is automatically built and hosted on GitLab Pages.
 
 ## Customizing the template
 
