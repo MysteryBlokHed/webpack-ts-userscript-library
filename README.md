@@ -87,9 +87,9 @@ To automatically build when a source file is modified, run:
 yarn dev
 ```
 
-Building will result in JavaScript files in the `build/` directory (these can be ignored)
-and a file ending in `.user.js` in the root of the project.
-This is the built UserScript.
+Built JS files and type declarations will be placed in the `lib/` directory,
+and the UserScript will be placed in the root. The `package.json` file is configured
+to publish files in the `lib/` directory to npm.
 
 ## License
 
