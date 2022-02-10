@@ -28,6 +28,8 @@ On GitLab repositories, the latest documentation is automatically built and host
 
 ### Changing UserScript info
 
+You can search for `webpack-ts-userscript-library` and `LibraryName` across the template's files to find what needs replacing.
+
 The UserScript's name, description, version, and author are all retrieved from the project's `package.json`.
 Anything else such as the site to match and the grants are changed from the [Webpack Config].
 
@@ -61,6 +63,58 @@ and prompt you to add a version to the commit message.
 You can then create a new tag and release for your project with an optimized UserScript.
 
 <!-- These instructions can be updated to fit your project's requirements -->
+
+## Use
+
+### In a Node project
+
+To use in a Node project, add webpack-ts-userscript-library as a dependency.
+
+```sh
+# npm
+npm install webpack-ts-userscript-library
+
+# yarn
+yarn add webpack-ts-userscript-library
+```
+
+You can then import and use functions:
+
+```javascript
+import { someFunction } from 'webpack-ts-userscript-library'
+```
+
+### In a normal UserScript
+
+In a UserScript that isn't built with some build tool, you can `@require` the library:
+
+```javascript
+// @require     https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library/-/raw/main/webpack-ts-userscript-library.user.js
+```
+
+<!-- Make sure that this is true for your project -->
+
+You can replace `main` with a specific release tag like `v0.1.0` to require a specific version:
+
+```javscript
+// @require     https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library/-/raw/v0.1.0/webpack-ts-userscript-library.user.js
+```
+
+Functions are available on the global `LibraryName` object:
+
+```javascript
+const { someFunction } = LibraryName
+```
+
+#### Type declarations
+
+The types included with the npm package still work when the library is `@require`'d.
+Just add the types as a dev dependency for a Node project or install them globally.
+With the package installed, include the following reference line somewhere in your TypeScript source file:
+
+```typescript
+/// <reference types="webpack-ts-userscript-library" />
+```
 
 ## Building
 
