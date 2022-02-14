@@ -42,7 +42,10 @@ build:
 
 test:
   stage: test
-  rules: [changes: *changes]
+  rules:
+    - changes: *changes
+      exists:
+        - lib/**/*
   script:
     - yarn test
 
