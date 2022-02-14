@@ -1,6 +1,6 @@
 # webpack-ts-userscript-library
 
-A template to create UserScript libraries using TypeScript and Webpack.
+A template to create UserScript libraries using TypeScript and Webpack tested with Jest.
 
 <!-- Info on how to use the template -->
 

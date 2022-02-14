@@ -1,27 +1,20 @@
 name: CI
 on:
-  push:
+  push: &branches_paths
     branches: [main]
     paths:
       - src/**/*
+      - test/**/*
       - package.json
       - tsconfig.json
       - webpack.config.js
       - .github/workflows/*
       - .prettier*
-  pull_request:
-    branches: [main]
-    paths:
-      - src/**/*
-      - package.json
-      - tsconfig.json
-      - webpack.config.js
-      - .github/workflows/*
-      - .prettier*
+  pull_request: *branches_paths
 
 jobs:
-  lint_and_build:
-    name: Lint And Build
+  lint_build_test:
+    name: Lint, Build, and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -40,10 +33,13 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --cache-folder .yarn-cache
+        run: yarn --frozen-lockfile --check-files --cache-folder .yarn-cache install
 
       - name: Lint
         run: yarn lint --check
 
       - name: Build
         run: yarn build
+
+      - name: Test
+        run: yarn test
