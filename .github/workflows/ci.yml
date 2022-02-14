@@ -1,6 +1,6 @@
 name: CI
 on:
-  push: &branches_paths
+  push:
     branches: [main]
     paths:
       - src/**/*
@@ -10,7 +10,16 @@ on:
       - webpack.config.js
       - .github/workflows/*
       - .prettier*
-  pull_request: *branches_paths
+  pull_request:
+    branches: [main]
+    paths:
+      - src/**/*
+      - test/**/*
+      - package.json
+      - tsconfig.json
+      - webpack.config.js
+      - .github/workflows/*
+      - .prettier*
 
 jobs:
   lint_build_test:
