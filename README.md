@@ -60,7 +60,10 @@ const banner = genBanner({
 To create a commit for a release version, run `yarn release`.
 This will re-build the UserScript in production mode, add all files with `git add .`,
 and prompt you to add a version to the commit message.
-You can then create a new tag and release for your project with an optimized UserScript.
+You can then create a new tag and release for your project.
+
+Release versions stay unobfuscated since some UserScript hosting sites don't allow minified scripts.
+You can make releases minified by replacing `yarn build` with `yarn build --mode production` in the release script.
 
 <!-- These instructions can be updated to fit your project's requirements -->
 
