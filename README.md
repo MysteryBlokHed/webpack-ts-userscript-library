@@ -58,12 +58,13 @@ const banner = genBanner({
 ### Creating a release commit
 
 To create a commit for a release version, run `yarn release`.
-This will re-build the UserScript in production mode, add all files with `git add .`,
+This will build the UserScript normally alongside a minified version in production mode.
+It then all files with `git add .`,
 and prompt you to add a version to the commit message.
 You can then create a new tag and release for your project.
 
-Release versions stay unobfuscated since some UserScript hosting sites don't allow minified scripts.
-You can make releases minified by replacing `yarn build` with `yarn build --mode production` in the release script.
+Both minified and unminified versions are generated since some UserScript hosting sites don't allow minified scripts.
+You can use the `.min.user.js` file when you're able to, and the normal `.user.js` file otherwise.
 
 <!-- These instructions can be updated to fit your project's requirements -->
 
@@ -101,6 +102,13 @@ You can replace `main` with a specific release tag like `v0.1.0` to require a sp
 
 ```javascript
 // @require     https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library/-/raw/v0.1.0/webpack-ts-userscript-library.user.js
+```
+
+Each release tag also has a minified version of the script available,
+which can be used by changing the file extension to `.min.user.js`:
+
+```javascript
+// @require     https://gitlab.com/MysteryBlokHed/webpack-ts-userscript-library/-/raw/v0.1.0/webpack-ts-userscript-library.min.user.js
 ```
 
 Functions are available on the global `LibraryName` object:
