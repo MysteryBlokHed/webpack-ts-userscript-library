@@ -1,4 +1,4 @@
-import { hello } from '../lib'
+import { hello } from 'webpack-ts-userscript-library'
 
 describe('the hello function', () => {
   it('prints hello world', () => {
