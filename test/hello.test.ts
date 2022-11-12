@@ -1,4 +1,4 @@
-import { hello } from '../lib'
+import { hello } from '../src'
 
 describe('the hello function', () => {
   it('prints hello world', () => {
