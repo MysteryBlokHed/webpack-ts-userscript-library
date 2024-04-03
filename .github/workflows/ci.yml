@@ -5,6 +5,8 @@ on:
     paths:
       - src/**/*
       - package.json
+      - pnpm-lock.yaml
+      - README.md
       - tsconfig.json
       - webpack.config.js
       - .github/workflows/*
@@ -14,6 +16,8 @@ on:
     paths:
       - src/**/*
       - package.json
+      - pnpm-lock.yaml
+      - README.md
       - tsconfig.json
       - webpack.config.js
       - .github/workflows/*
@@ -31,20 +35,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
 
-      - name: Yarn cache
+      - name: pnpm cache
         uses: actions/cache@v2
         with:
           path: |
             build/
             node_modules/
-            .yarn-cache/
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            ~/.local/share/pnpm/store/
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: yarn install --cache-folder .yarn-cache
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint --check
+        run: pnpm run lint -- --check
 
       - name: Build
-        run: yarn build
+        run: pnpm run build

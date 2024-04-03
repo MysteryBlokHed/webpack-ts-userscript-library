@@ -9,31 +9,33 @@ cache:
   paths:
     - build/
     - node_modules/
-    - .yarn-cache/
+    - ~/.local/share/pnpm/store/
 
 .changes: &changes
   - src/**/*
   - package.json
+  - pnpm-lock.yaml
+  - README.md
   - tsconfig.json
   - webpack.config.js
-  - .gitlab-ci.yml
+  - .github/workflows/*
   - .prettier*
 
-yarn_install:
+pnpm_install:
   stage: install
   rules: [changes: *changes]
   script:
-    - yarn --frozen-lockfile --check-files --cache-folder .yarn-cache install
+    - pnpm install
 
 lint:
   stage: lint
   rules: [changes: *changes]
   script:
-    - yarn lint --check
+    - pnpm run lint -- --check
 
 test_build:
   stage: build
   rules: [changes: *changes]
   script:
     - export NODE_OPTIONS=--openssl-legacy-provider
-    - yarn build
+    - pnpm run build
