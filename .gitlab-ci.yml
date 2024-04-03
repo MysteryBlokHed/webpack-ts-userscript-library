@@ -18,7 +18,7 @@ cache:
   - README.md
   - tsconfig.json
   - webpack.config.js
-  - .github/workflows/*
+  - .gitlab-ci.yml
   - .prettier*
 
 pnpm_install:
