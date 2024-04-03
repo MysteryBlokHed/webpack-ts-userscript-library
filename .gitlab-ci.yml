@@ -25,6 +25,7 @@ pnpm_install:
   stage: install
   rules: [changes: *changes]
   script:
+    - npm install --global pnpm
     - pnpm install
 
 lint:
