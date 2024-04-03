@@ -32,6 +32,7 @@ lint:
   stage: lint
   rules: [changes: *changes]
   script:
+    - npm install --global pnpm
     - pnpm run lint -- --check
 
 test_build:
@@ -39,4 +40,5 @@ test_build:
   rules: [changes: *changes]
   script:
     - export NODE_OPTIONS=--openssl-legacy-provider
+    - npm install --global pnpm
     - pnpm run build
