@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
 
-      -name: Install pnpm
+      - name: Install pnpm
         run: npm install --global pnpm
 
       - name: pnpm cache
