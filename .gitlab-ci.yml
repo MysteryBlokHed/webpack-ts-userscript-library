@@ -33,7 +33,7 @@ lint:
   rules: [changes: *changes]
   script:
     - npm install --global pnpm
-    - pnpm run lint -- --check
+    - pnpm run lint --check
 
 test_build:
   stage: build
