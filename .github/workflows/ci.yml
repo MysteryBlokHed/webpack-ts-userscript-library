@@ -30,10 +30,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
 
       - name: Install pnpm
         id: install_pnpm
@@ -43,7 +43,7 @@ jobs:
           echo "pnpm_store=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: pnpm cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             build/
