@@ -27,6 +27,7 @@ pnpm_install:
   script:
     - npm install --global pnpm
     - pnpm install
+    - pnpm store path
 
 lint:
   stage: lint
