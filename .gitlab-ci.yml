@@ -9,7 +9,7 @@ cache:
   paths:
     - build/
     - node_modules/
-    - ~/.local/share/pnpm/store/
+    - /builds/.pnpm-store/v3/
 
 .changes: &changes
   - src/**/*
