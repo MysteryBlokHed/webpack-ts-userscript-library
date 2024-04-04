@@ -6,6 +6,8 @@ on:
       - src/**/*
       - test/**/*
       - package.json
+      - pnpm-lock.yaml
+      - README.md
       - tsconfig.json
       - webpack.config.js
       - .github/workflows/*
@@ -16,6 +18,8 @@ on:
       - src/**/*
       - test/**/*
       - package.json
+      - pnpm-lock.yaml
+      - README.md
       - tsconfig.json
       - webpack.config.js
       - .github/workflows/*
@@ -28,27 +32,34 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
 
-      - name: Yarn cache
-        uses: actions/cache@v2
+      - name: Install pnpm
+        id: install_pnpm
+        run: |
+          npm install --global pnpm
+          pnpm store path
+          echo "pnpm_store=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: pnpm cache
+        uses: actions/cache@v4
         with:
           path: |
             node_modules/
-            .yarn-cache/
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            ${{ steps.install_pnpm.outputs.pnpm_store }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile --check-files --cache-folder .yarn-cache install
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint --check
+        run: pnpm run lint --check
 
       - name: Build
-        run: yarn build
+        run: pnpm run build
 
       - name: Test
-        run: '[ -d "./src" ] && yarn test'
+        run: '[ -d "./src" ] && pnpm run test'

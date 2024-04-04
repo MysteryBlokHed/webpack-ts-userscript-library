@@ -15,12 +15,14 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "lint": "prettier \"**/*.{js,ts,json,md,yml}\"",
+    "lint": "pnpm run prettier \"**/*.{js,ts,json,md,yml}\"",
     "build": "tsc && node update-dts.js && webpack",
-    "dev": "nodemon -w src -e ts --exec \"yarn build || exit 1\"",
+    "nodemon": "nodemon",
+    "prettier": "prettier",
+    "dev": "pnpm run nodemon -w src -e ts --exec \"pnpm run build || exit 1\"",
     "test": "jest",
     "doc": "typedoc",
-    "release": "yarn build && webpack --mode production && git add . && git commit -m \":bookmark: Release <version>\" --edit && git rm ./*.min.user.js"
+    "release": "pnpm run build && pnpm run webpack --mode production && git add . && git commit -m \":bookmark: Release <version>\" --edit && git rm ./*.min.user.js"
   },
   "jest": {
     "verbose": true,
@@ -28,19 +30,19 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
-    "@types/greasemonkey": "^4.0.2"
+    "@types/greasemonkey": "^4.0.7"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
+    "@types/jest": "^27.5.2",
     "greasetools": "^0.2.0",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.19",
-    "prettier": "^2.4.1",
-    "terser-webpack-plugin": "^5.2.4",
-    "ts-jest": "^27.1.3",
-    "typedoc": "^0.22.11",
-    "typescript": "^4.4.4",
-    "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.1"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-jest": "^27.1.5",
+    "typedoc": "^0.25.12",
+    "typescript": "^4.9.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^4.10.0"
   }
 }

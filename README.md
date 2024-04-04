@@ -59,7 +59,7 @@ const banner = genBanner({
 
 To create a commit for a release version, run `yarn release`.
 This will build the UserScript normally alongside a minified version in production mode.
-It then all files with `git add .`,
+It will then all files with `git add .`,
 and prompt you to add a version to the commit message.
 You can then create a new tag and release for your project.
 
@@ -131,11 +131,11 @@ With the package installed, include the following reference line somewhere in yo
 
 ### Setup
 
-Building this project requires Node.js and Yarn.
+Building this project requires Node.js and pnpm.
 To install dependencies, run:
 
 ```sh
-yarn install
+pnpm install
 ```
 
 ### Build
@@ -143,13 +143,13 @@ yarn install
 To build the project, run:
 
 ```sh
-yarn build
+pnpm run build
 ```
 
 To automatically build when a source file is modified, run:
 
 ```sh
-yarn dev
+pnpm run dev
 ```
 
 Built JS files and type declarations will be placed in the `lib/` directory,
